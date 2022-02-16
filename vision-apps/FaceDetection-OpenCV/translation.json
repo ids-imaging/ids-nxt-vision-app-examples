@@ -1,0 +1,20 @@
+{
+    "scale":
+    {
+        "Title":
+        {
+            "en": "Scale factor",
+            "de": "Skalierungsfaktor"
+        },
+        "Brief":
+        {
+            "en": "Scale factor for the classification image",
+            "de": "Skalierungsfaktor für das zu klassifizierende Bild"
+        },
+        "Description":
+        {
+            "en": "Scale factor for the classification image",
+            "de": "Skalierungsfaktor für das zu klassifizierende Bild"
+        }
+    }
+}

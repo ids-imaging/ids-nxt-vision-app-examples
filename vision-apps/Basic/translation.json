@@ -1,0 +1,88 @@
+{
+    "visionduration":
+    {
+        "Title":
+        {
+            "en": "Image processing time (ms)",
+            "de": "Bildverarbeitungszeit (ms)"
+        },
+        "Brief":
+        {
+            "en": "My brief description",
+            "de": "Meine Kurzbeschreibung"
+        },
+        "Description":
+        {
+            "en": "My description",
+            "de": "Meine Beschreibung"
+        }
+    },
+    "examplelogmessage":
+    {
+        "Title":
+        {
+            "en": "Example message",
+            "de": "Beispiel Nachricht"
+        },
+        "Brief":
+        {
+            "en": "Brief description",
+            "de": "Kurzbeschreibung"
+        },
+        "Description":
+        {
+            "en": "Detailed error message",
+            "de": "Detaillierte Fehlermeldung"
+        }
+    },
+    "logmessageaction":
+    {
+        "Title":
+        {
+            "en": "Write log message",
+            "de": "Logmeldung schreiben",
+            "fr": "Écrire un message de journal",
+            "ja": "ログメッセージの書き込み"
+        }
+    },
+    "default": {
+        "Title": {
+            "en": "Result",
+            "de": "Ergebnis",
+            "fr": "Résultat",
+            "ja": "結果"
+        }
+    },
+    "myroi": {
+        "Title": {
+            "en": "Region of interest",
+            "de": "Interessenbereich",
+            "fr": "Région d'intérêt",
+            "ja": "関心のある地域"
+        }
+    },
+    "myenum": {
+        "Title": {
+            "en": "Trigger mode",
+            "de": "Trigger-Modus",
+            "fr": "Mode de déclenchement",
+            "ja": "トリガーモード"
+        }
+    },
+    "triggerbutton": {
+        "Title": {
+            "en": "Image acquisition",
+            "de": "Bildaufnahme",
+            "fr": "Capture d'image",
+            "ja": "画像の取り込み"
+        }
+    },
+    "myslider": {
+        "Title": {
+            "en": "Red gain",
+            "de": "Verstärkung Rotanteil",
+            "fr": "Gain rouge",
+            "ja": "レッドゲイン"
+        }
+    }
+}

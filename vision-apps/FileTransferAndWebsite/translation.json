@@ -1,0 +1,12 @@
+{
+    "sendftpaction":
+    {
+        "Title":
+        {
+            "en": "Send image to FTP server",
+            "de": "Bild an FTP Server senden",
+            "fr": "Envoyer une image à un serveur FTP",
+            "ja": "画像をFTPサーバーに送信する"
+        }
+    }
+}

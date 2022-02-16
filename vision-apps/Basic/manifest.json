@@ -1,0 +1,24 @@
+{
+    "Name": "vappbasic",
+    "Manufacturer": "IDS Imaging Development Systems GmbH",
+    "Version": "1.0.0",
+    "Type": "VApp",
+    "Language":
+    {
+        "Title":
+        {
+            "en": "VAppBasic",
+            "de": "VAppBasic"
+        },
+        "Brief":
+        {
+            "en": "Basic example Vision App",
+            "de": "Grundlagenbeispiel Vision App"
+        },
+        "Description":
+        {
+            "en": "This sample app illustrates a possible setup of a vision app and demonstrates some basic functionalities of the NXT framework such as setting camera parameters, writing messages to the system log, and creating configurables. Configurables are displayed in the NXT cockpit as buttons, sliders and so on.",
+            "de": "Diese Beispiel-App veranschaulicht einen möglichen Aufbau einer Vision-App und demonstriert einige grundlegende Funktionalitäten des NXT-Frameworks, wie bspw. das Einstellen von Kameraparametern, das Schreiben von Meldungen in das Systemprotokoll und das Erstellen von Configurables. Configurables werden im NXT-Cockpit als Schaltflächen, Schieberegler usw. angezeigt."
+        }
+    }
+}

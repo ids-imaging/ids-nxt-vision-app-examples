@@ -1,0 +1,56 @@
+{
+    "grayvalue":
+    {
+        "Title":
+        {
+            "en": "Gray value",
+            "de": "Grauwert"
+        },
+        "Brief":
+        {
+            "en": "Average gray value",
+            "de": "Durchschnittlicher Grauwert"
+        },
+        "Description":
+        {
+            "en": "Content read from the recognized code.",
+            "de": "Aus dem erkannten Code gelesener Inhalt."
+        }
+    },
+    "threshold":
+    {
+        "Title":
+        {
+            "en": "Threshold",
+            "de": "Grenzwert"
+        },
+        "Brief":
+        {
+            "en": "Minimum gray value",
+            "de": "Minimaler Grauwert"
+        },
+        "Description":
+        {
+            "en": "Every gray value above this threshold will be recognized as light.",
+            "de": "Jeder Grauwert über diesem Grenzwert wird als hell erkannt."
+        }
+    },
+    "good":
+    {
+        "Title":
+        {
+            "en": "Light",
+            "de": "Hell"
+        },
+        "Brief":
+        {
+            "en": "Image is light",
+            "de": "Bild ist hell"
+        },
+        "Description":
+        {
+            "en": "The processed image is - in average - light.",
+            "de": "Das verarbeitete Bild ist - im Durchschnitt - hell."
+        }
+    }
+}

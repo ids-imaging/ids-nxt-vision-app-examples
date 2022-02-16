@@ -1,0 +1,20 @@
+{
+    "visionduration":
+    {
+        "Title":
+        {
+            "en": "Image processing time (ms)",
+            "de": "Bildverarbeitungszeit (ms)"
+        },
+        "Brief":
+        {
+            "en": "My brief description",
+            "de": "Meine Kurzbeschreibung"
+        },
+        "Description":
+        {
+            "en": "My description",
+            "de": "Meine Beschreibung"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "./static/css/main.495d0edb.chunk.css",
+    "main.js": "./static/js/main.27b7b672.chunk.js",
+    "main.js.map": "./static/js/main.27b7b672.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.f759f3d3.js",
+    "runtime-main.js.map": "./static/js/runtime-main.f759f3d3.js.map",
+    "static/js/2.7e358e31.chunk.js": "./static/js/2.7e358e31.chunk.js",
+    "static/js/2.7e358e31.chunk.js.map": "./static/js/2.7e358e31.chunk.js.map",
+    "static/js/3.d72bd128.chunk.js": "./static/js/3.d72bd128.chunk.js",
+    "static/js/3.d72bd128.chunk.js.map": "./static/js/3.d72bd128.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.495d0edb.chunk.css.map": "./static/css/main.495d0edb.chunk.css.map",
+    "static/js/2.7e358e31.chunk.js.LICENSE.txt": "./static/js/2.7e358e31.chunk.js.LICENSE.txt",
+    "static/media/ids-nxt-logo.1a2d2890.svg": "./static/media/ids-nxt-logo.1a2d2890.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f759f3d3.js",
+    "static/js/2.7e358e31.chunk.js",
+    "static/css/main.495d0edb.chunk.css",
+    "static/js/main.27b7b672.chunk.js"
+  ]
+}

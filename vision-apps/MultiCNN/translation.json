@@ -1,0 +1,78 @@
+{
+    "inferencetime":
+    {
+        "Title":
+        {
+            "en": "Image processing time (ms)",
+            "de": "Bildverarbeitungszeit (ms)"
+        },
+        "Brief":
+        {
+            "en": "My brief description",
+            "de": "Meine Kurzbeschreibung"
+        },
+        "Description":
+        {
+            "en": "My description",
+            "de": "Meine Beschreibung"
+        }
+    },
+    "inference":
+    {
+        "Title":
+        {
+            "en": "Inference",
+            "de": "Inferenz"
+        }
+    },
+    "inference_propability":
+    {
+        "Title":
+        {
+            "en": "Probability",
+            "de": "Wahrscheinlichkeit"
+        }
+    },
+    "cnns":
+    {
+        "Title":
+        {
+            "en": "Installed CNNs",
+            "de": "Installierte CNNs"
+        }
+    },
+    "cnnpackage":
+    {
+        "Title":
+        {
+            "en": "CNN file",
+            "de": "CNN Datei"
+        },
+        "Brief":
+        {
+            "en": "Install new CNN / Remove selected CNN",
+            "de": "Neues CNN installieren / Gewähltes CNN entfernen"
+        },
+        "Description":
+        {
+            "en": "Install new CNN / Remove selected CNN",
+            "de": "Neues CNN installieren / Gewähltes CNN entfernen"
+        }
+    },
+    "enable":
+    {
+        "Title":
+        {
+            "en": "Enable selected CNN",
+            "de": "Gewähltes CNN aktivieren"
+        }
+    },
+    "disable":
+    {
+        "Title":
+        {
+            "en": "Disable selected CNN",
+            "de": "Gewähltes CNN deaktivieren"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "Name": "multiroi",
+    "Manufacturer": "IDS Imaging Development Systems GmbH",
+    "Version": "1.0.0",
+    "Type": "VApp",
+    "Language":
+    {
+        "Title":
+        {
+            "en": "MultiROI",
+            "de": "MultiROI"
+        },
+        "Brief":
+        {
+            "en": "Example VApp to demonstrate the use of multiple ROIs",
+            "de": "Beispiel-VApp zur Demonstration der Verwendung von mehreren ROIs"
+        },
+        "Description":
+        {
+            "en": "This VApp uses multiple ROIs",
+            "de": "Diese VApp verwendet mehrere ROIs"
+        }
+    }
+}

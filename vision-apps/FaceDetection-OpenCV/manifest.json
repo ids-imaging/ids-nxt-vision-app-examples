@@ -1,0 +1,24 @@
+{
+    "Name": "facedetection",
+    "Manufacturer": "IDS Imaging Development Systems GmbH",
+    "Version": "2.1.0",
+    "Type": "VApp",
+    "Language":
+    {
+        "Title":
+        {
+            "en": "FaceDetection",
+            "de": "Gesichtserkennung"
+        },
+        "Brief":
+        {
+            "en": "Detects faces",
+            "de": "Erkennt Gesichter"
+        },
+        "Description":
+        {
+            "en": "Detects faces.",
+            "de": "Erkennt Gesichter."
+        }
+    }
+}

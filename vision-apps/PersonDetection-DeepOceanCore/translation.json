@@ -1,0 +1,52 @@
+{
+    "detectionthreshold":
+    {
+        "Title":
+        {
+            "en": "Detectionthreshold",
+            "de": "Detektionsschwelle"
+        }
+    },
+    "pixelation":
+    {
+        "Title":
+        {
+            "en": "Pixelation",
+            "de": "Verpixelung"
+        }
+    },
+    "inferencetime":
+    {
+        "Title":
+        {
+            "en": "Image processing time",
+            "de": "Bildverarbeitungszeit"
+        },
+        "Brief":
+        {
+            "en": "DeepOceanCore processing time",
+            "de": "DeepOceanCore Verarbeitungszeit"
+        },
+        "Description":
+        {
+            "en": "DeepOceanCore processing time",
+            "de": "DeepOceanCore Verarbeitungszeit"
+        }
+    },
+    "persons":
+    {
+        "Title":
+        {
+            "en": "Persons",
+            "de": "Personen"
+        }
+    },
+    "resultimage":
+    {
+        "Title":
+        {
+            "en": "Resultimage",
+            "de": "Ergebnisbild"
+        }
+    }
+}

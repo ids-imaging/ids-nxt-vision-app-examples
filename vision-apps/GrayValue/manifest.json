@@ -1,0 +1,24 @@
+{
+    "Name": "grayvalue",
+    "Manufacturer": "IDS Imaging Development Systems GmbH",
+    "Version": "2.1.0",
+    "Type": "VApp",
+    "Language":
+    {
+        "Title":
+        {
+            "en": "Grayvalue",
+            "de": "GrauWert"
+        },
+        "Brief":
+        {
+            "en": "Calculates the average gray value",
+            "de": "Berechnet den durchschnittlichen Grauwert"
+        },
+        "Description":
+        {
+            "en": "Calculates the average gray value.",
+            "de": "Berechnet den durchschnittlichen Grauwert."
+        }
+    }
+}

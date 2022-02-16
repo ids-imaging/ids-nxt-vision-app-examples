@@ -1,0 +1,24 @@
+{
+    "Name": "multicnn",
+    "Manufacturer": "IDS Imaging Development Systems GmbH",
+    "Version": "1.0.0",
+    "Type": "VApp",
+    "Language":
+    {
+        "Title":
+        {
+            "en": "MultiCNN",
+            "de": "MultiCNN"
+        },
+        "Brief":
+        {
+            "en": "Example VApp to demonstrate the use of multiple CNNs",
+            "de": "Beispiel-VApp zur Demonstration der Verwendung von mehreren CNNs"
+        },
+        "Description":
+        {
+            "en": "This VApp activates multiple CNNs which allows switching between CNNs at runtime with high performance.",
+            "de": "Diese VApp aktiviert mehrere CNNs welches einen Wechsel zwischen den CNNs zur Laufzeit mit hoher Performance ermöglicht."
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "inference":
+    {
+        "Title":
+        {
+            "en": "Inference",
+            "de": "Inferenz"
+        }
+    },
+    "inference_propability":
+    {
+        "Title":
+        {
+            "en": "Probability",
+            "de": "Wahrscheinlichkeit"
+        }
+    },
+    "inferencetime":
+    {
+        "Title":
+        {
+            "en": "Inference Time",
+            "de": "Inferenzzeit"
+        }
+    }
+}

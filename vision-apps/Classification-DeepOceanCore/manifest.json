@@ -1,0 +1,24 @@
+{
+    "Name": "classification",
+    "Manufacturer": "IDS Imaging Development Systems GmbH",
+    "Version": "1.0.0",
+    "Type": "VApp",
+    "Language":
+    {
+        "Title":
+        {
+            "en": "Classification",
+            "de": "Klassifikation"
+        },
+        "Brief":
+        {
+            "en": "AI classification example",
+            "de": "KI Klassifikationsbeispiel"
+        },
+        "Description":
+        {
+            "en": "Example VApp to demonstration the use of the Deep Ocean Core for classification.",
+            "de": "Beispiel VApp zur Demonstation der Verwendung des Deep Ocean Core zur Klassifizierung."
+        }
+    }
+}

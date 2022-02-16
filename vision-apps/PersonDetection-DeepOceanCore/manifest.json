@@ -1,0 +1,24 @@
+{
+    "Name": "persondetector",
+    "Manufacturer": "IDS Imaging Development Systems GmbH",
+    "Version": "1.1.2",
+    "Type": "VApp",
+    "Language":
+    {
+        "Title":
+        {
+            "en": "PersonDetector",
+            "de": "PersonDetector"
+        },
+        "Brief":
+        {
+            "en": "",
+            "de": ""
+        },
+        "Description":
+        {
+            "en": "",
+            "de": ""
+        }
+    }
+}

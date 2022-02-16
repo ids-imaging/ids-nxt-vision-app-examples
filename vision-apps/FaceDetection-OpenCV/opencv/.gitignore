@@ -1,0 +1,6 @@
+include/*
+!include/.gitkeep
+lib/*
+!lib/.gitkeep
+share/*
+!share/.gitkeep
