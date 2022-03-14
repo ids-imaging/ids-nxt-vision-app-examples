@@ -1,19 +1,19 @@
 #!/bin/bash
 
-#############################################################
-#	This script compiles OpenCV for IDS NXT					#
-#	Copy this script to your shared folder					#
-#	(normaly <WindowsHomeFolder>\Documents\NXT).			#
-# 	You can download opencv automatically 					#
-#	or download it manually.								#
-#	Open IDS NXT Vision App Build Engine in VirtualBox		#
-#	To change keyboard layout to german do 					#
-#	"sudo loadkeys de"										#
-# 	Change to directory: cd ~/share/ 						#
-#	Run "bash ./build.sh"									#
-# 	After running this script you can find OpenCV in your	#
-#	script folder											#
-#############################################################
+###############################################################
+#       This script compiles OpenCV for IDS NXT               #
+#       Copy this script to your shared folder                #
+#       (normaly <WindowsHomeFolder>\Documents\NXT).          #
+#       You can download opencv automatically                 #
+#       or download it manually.                              #
+#       Open IDS NXT Vision App Build Engine in VirtualBox    #
+#       To change keyboard layout to german do                #
+#       "sudo loadkeys de"                                    #
+#       Change to directory: cd ~/share/                      #
+#       Run "bash ./build.sh"                                 #
+#       After running this script you can find OpenCV in your #
+#       script folder                                         #
+###############################################################
 
 OPENCV_VERSION=4.4.0
 
@@ -34,7 +34,7 @@ cd ~
 if [[ -d "OpenCV4NXT" ]]
 then
     echo " delete directory OpenCV4NXT"
-	rm -r OpenCV4NXT
+    rm -r OpenCV4NXT
 fi
 
 mkdir OpenCV4NXT
@@ -42,23 +42,23 @@ cd OpenCV4NXT
 
 # Step 4.a: Download OpenCV
 if [ "$DL_OPENCV" = true ] ; then
-	wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip
+    wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip
 else
 # Or copy existing opencv source into this folder
-	if [[ -f $ORIGINAL_PWD/$OPENCV_VERSION.zip ]]
-	then
-		cp $ORIGINAL_PWD/$OPENCV_VERSION.zip .
-	else
-		echo "OpenCV source file does not exists. Check file and/or enable the auto-download in this script."
-		exit
-	fi
+    if [[ -f $ORIGINAL_PWD/$OPENCV_VERSION.zip ]]
+    then
+        cp $ORIGINAL_PWD/$OPENCV_VERSION.zip .
+    else
+        echo "OpenCV source file does not exists. Check file and/or enable the auto-download in this script."
+        exit
+    fi
 fi
 
 # Step 5: unzip OpenCV
 if [[ ! -f $OPENCV_VERSION.zip ]]
 then
     echo "OpenCV source does not exists."
-	exit
+    exit
 fi
 
 unzip $OPENCV_VERSION.zip
