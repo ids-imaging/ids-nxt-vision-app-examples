@@ -1,4 +1,5 @@
-![IDS NXT Logo](utils/ids-nxt-logo.png)
+![IDS NXT Logo](utils/ids-nxt-logo.png#gh-light-mode-only)
+![IDS NXT Logo White](utils/ids-nxt-logo-white.png#gh-dark-mode-only)
 # Vision app examples
 This repository provides several vision app samples to get you started quickly and easily with programming your own vision app and using the IDS NXT API. 
 
