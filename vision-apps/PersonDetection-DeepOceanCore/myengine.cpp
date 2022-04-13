@@ -25,7 +25,7 @@ MyEngine::MyEngine(ResultSourceCollection &resultcollection)
     , _pixelmode{ "pixelation", QStringList{ MODE_None, MODE_Pixel, MODE_Black }, MODE_None }
     , _resultImage{ "resultimage" }
 {
-    // MyEngine constructor. The result collection (e.g. number of peaple detected) is forwarded by the MyApp object, the other object are defined within this class, such as
+    // MyEngine constructor. The result collection (e.g. number of people detected) is forwarded by the MyApp object, the other object are defined within this class, such as
     // the result image (could be the image with detected persons pixelated),
     // and the configurables (e.g. a slider for the detection threshold or a drop down menu the pixelation mode).
     _detectionThreshold.setRange(0, 100);

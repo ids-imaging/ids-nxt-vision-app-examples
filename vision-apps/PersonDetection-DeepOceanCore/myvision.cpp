@@ -18,12 +18,12 @@ void MyVision::process()
         auto img = image();
         qCDebug(lc) << "process " << img->key();
 
-        if (_cnnData) { // check if deep ocean core is correct initialized
+        if (_cnnData) { // check if deep ocean core is correctly initialized
             // #DETECTION
             const auto qImg = img->getQImage();
             // scale the image to the input size of the cnn
             auto scaledImage = qImg.scaled(_cnnData.inputSize(), Qt::IgnoreAspectRatio, Qt::FastTransformation);
-            // process Image with the CNN configured on the Deep Ocean Core
+            // process image with the CNN configured on the Deep Ocean Core
             auto buffer = _cnnData.processImage(scaledImage);
 
             // postprocesing with TfLite
@@ -32,7 +32,7 @@ void MyVision::process()
 
             img->visionOK("", "");
         } else {
-            // check if deep ocean core is correct initialized
+            // check if deep ocean core is correctly initialized
             img->visionFailed("Deep ocean core is not initialized", "Deep ocean core is not initialized");
         }
     } catch (std::exception &e) {
