@@ -22,8 +22,12 @@ void MyVision::process()
             for (auto &cnn : _cnnData) {
                 if (cnn) {
                     // process image with deep ocean core.
-                    // Scale the image to the input size of the cnn. If you don't scale it the NXT Framework will scale it which  can lower performance
-                    _result.push_back(cnn.processImage(img->getQImage().scaled(cnn.inputSize(), Qt::IgnoreAspectRatio, Qt::FastTransformation)));
+                    // Scale the image to the input size of the cnn. If you don't scale it the NXT Framework will scale
+                    // it which  can lower performance
+                    _result.push_back(cnn.processImage(img->getQImage().scaled(cnn.inputSize(),
+                                                                               Qt::IgnoreAspectRatio,
+                                                                               Qt::FastTransformation),
+                                                       QStringLiteral("Classification")));
                 }
             }
 
