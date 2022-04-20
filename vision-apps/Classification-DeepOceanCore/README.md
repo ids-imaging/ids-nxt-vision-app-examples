@@ -4,7 +4,7 @@ This vision app demonstrates how to accelerate a neural network using the Deep O
 
 ## Getting Started
 ### Prerequisites
-![IDS NXT SDK Version](https://img.shields.io/badge/NXT_API-v2.1.0-008A96.svg)  ![IDS NXT OS Version](https://img.shields.io/badge/NXT_OS-v1.1.x-008A96.svg)  
+![IDS NXT SDK Version](https://img.shields.io/badge/NXT_API-v2.3.0-008A96.svg)  ![IDS NXT OS Version](https://img.shields.io/badge/NXT_OS-v1.1.x-008A96.svg)  
 
 ## Hint
 To use your own CNN, copy the .cnn file into ./cnn directory.
