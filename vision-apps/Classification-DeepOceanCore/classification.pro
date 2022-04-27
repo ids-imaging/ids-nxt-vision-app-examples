@@ -9,7 +9,7 @@ HEADERS += myapp.h myvision.h myengine.h
 DEFINES +=
 DISTFILES +=
 #Mandatory params
-NXT_SDK = 2.1.0
+NXT_SDK = 2.3.0
 AVATAR = avatar.png
 MANIFEST = manifest.json
 TRANSLATION = translation.json

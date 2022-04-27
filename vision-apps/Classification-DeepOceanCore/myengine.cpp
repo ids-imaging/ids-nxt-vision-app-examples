@@ -60,9 +60,13 @@ void MyEngine::handleResult(std::shared_ptr<IDS::NXT::Vision> vision)
             throw std::runtime_error("CNN result not valid");
         }
 
+        // Get the output buffers of the CNN
+        const auto &allBuffers = cnnResult->allBuffers();
+
         // Check if result is suited for classification
-        if (cnnData.inferenceType() != IDS::NXT::CNNv2::CnnData::InferenceType::Classification) {
-            throw std::runtime_error("CNN is not suited for detection");
+        if (cnnData.inferenceType() != IDS::NXT::CNNv2::CnnData::InferenceType::Classification || allBuffers.size() != 1) {
+            throw std::runtime_error(
+                    "Error: CNN is not suited for classification or output buffer set is not specified correctly.");
         }
 
         // Get Deep Ocean Core processing time
@@ -76,7 +80,7 @@ void MyEngine::handleResult(std::shared_ptr<IDS::NXT::Vision> vision)
         double expSum = 0;
 
         // Classification cnns have only one output Buffer
-        auto currentCnnOutputBuffer = cnnResult->allBuffers().at(0);
+        auto currentCnnOutputBuffer = allBuffers.at(0);
 
         // Extract all classes with classification probability from the CNN
         for (qint32 cnt = 0; cnt < cnnData.classes().size(); cnt++) {
@@ -105,8 +109,8 @@ void MyEngine::handleResult(std::shared_ptr<IDS::NXT::Vision> vision)
 
         _resultcollection.addResult("inferencetime", inferencetime, "Time", vision->image());
     } catch (const std::runtime_error &e) {
-
         qCCritical(lc) << "Error handling result: " << e.what();
+        _resultcollection.addResult("inference", e.what(), QStringLiteral("Content1"), vision->image());
     }
 
     // signal that all parts of the image are finished
