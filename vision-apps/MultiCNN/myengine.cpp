@@ -2,33 +2,30 @@
 #include "myengine.h"
 
 // Include framework headers
-#include <resultsource.h>
 #include <QLoggingCategory>
 #include <cmath>
+#include <resultsource.h>
 
 // Include local headers
 #include "myvision.h"
 
 using namespace IDS::NXT;
 
-static QLoggingCategory lc{ "MultiCNN.engine" };
+static QLoggingCategory lc{"MultiCNN.engine"};
 
-MyEngine::MyEngine(ResultSourceCollection &resultcollection)
-    : _resultcollection{ resultcollection }
-{
+MyEngine::MyEngine(ResultSourceCollection& resultcollection)
+  : _resultcollection{resultcollection} {
     // Connect cnnChanged signal of the framework to local slot
     connect(&CNNv2::CnnManager::getInstance(), &CNNv2::CnnManager::cnnChanged, this, &MyEngine::cnnChanged);
 }
 
-std::shared_ptr<Vision> MyEngine::factoryVision()
-{
+std::shared_ptr<Vision> MyEngine::factoryVision() {
     // Simply construct a vision object, we may give further parameters, such as not-changing
     // parameters or shared (thread-safe!) objects.
     return std::make_shared<MyVision>();
 }
 
-void MyEngine::setupVision(std::shared_ptr<Vision> vision)
-{
+void MyEngine::setupVision(std::shared_ptr<Vision> vision) {
     // Here we could set changing parameters, such as current configurable values
     if (vision) {
         auto obj = std::static_pointer_cast<MyVision>(vision);
@@ -38,8 +35,7 @@ void MyEngine::setupVision(std::shared_ptr<Vision> vision)
     }
 }
 
-void MyEngine::handleResult(std::shared_ptr<Vision> vision)
-{
+void MyEngine::handleResult(std::shared_ptr<Vision> vision) {
     // Get the finished vision object
     auto obj = std::static_pointer_cast<MyVision>(vision);
 
@@ -106,12 +102,24 @@ void MyEngine::handleResult(std::shared_ptr<Vision> vision)
             result_classes[0].second /= expSum;
 
             // add result to collection
-            _resultcollection.addResult("inference", result_classes[0].first, QStringLiteral("CNN%1").arg(i + 1), vision->image());
-            _resultcollection.addResult("inference_propability", QString::number(result_classes[0].second, 'f', 2), QStringLiteral("CNN%1").arg(i + 1), vision->image());
-            _resultcollection.addResult("inferencetime", inferencetime[i], QStringLiteral("CNN%1").arg(i + 1), vision->image());
-            _resultcollection.addResult("cnn", allCnnData[i].name(), QStringLiteral("CNN%1").arg(i + 1), vision->image());
+            _resultcollection.addResult("inference",
+                                        result_classes[0].first,
+                                        QStringLiteral("CNN%1").arg(i + 1),
+                                        vision->image());
+            _resultcollection.addResult("inference_propability",
+                                        QString::number(result_classes[0].second, 'f', 2),
+                                        QStringLiteral("CNN%1").arg(i + 1),
+                                        vision->image());
+            _resultcollection.addResult("inferencetime",
+                                        inferencetime[i],
+                                        QStringLiteral("CNN%1").arg(i + 1),
+                                        vision->image());
+            _resultcollection.addResult("cnn",
+                                        allCnnData[i].name(),
+                                        QStringLiteral("CNN%1").arg(i + 1),
+                                        vision->image());
         }
-    } catch (const std::runtime_error &e) {
+    } catch (const std::runtime_error& e) {
         qCCritical(lc) << "Error handling result: " << e.what();
         _resultcollection.addResult("inference", e.what(), QStringLiteral("Content1"), vision->image());
     }
@@ -124,8 +132,7 @@ void MyEngine::handleResult(std::shared_ptr<Vision> vision)
     obj->setImage(nullptr);
 }
 
-void MyEngine::cnnChanged()
-{
+void MyEngine::cnnChanged() {
     // This function is needed to load the included cnn model upon the Vision App start
     qCDebug(lc) << "cnnChanged()";
     try {
@@ -138,7 +145,7 @@ void MyEngine::cnnChanged()
             qCCritical(lc) << "No cnn available";
             _activeCnns.clear();
         }
-    } catch (std::runtime_error &e) {
+    } catch (std::runtime_error& e) {
         qCCritical(lc) << e.what();
     }
 }

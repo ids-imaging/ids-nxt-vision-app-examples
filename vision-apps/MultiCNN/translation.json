@@ -39,6 +39,16 @@
         {
             "en": "Installed CNNs",
             "de": "Installierte CNNs"
+        },
+        "Brief":
+        {
+            "en": "Select an installed CNN to enable/disable or uninstall it",
+            "de": "Wählen Sie ein installiertes CNN aus, um es zu aktivieren/deaktivieren oder zu deinstallieren"
+        },
+        "Description":
+        {
+            "en": "Select an installed CNN to enable/disable or uninstall it",
+            "de": "Wählen Sie ein installiertes CNN aus, um es zu aktivieren/deaktivieren oder zu deinstallieren"
         }
     },
     "cnnpackage":
@@ -73,6 +83,32 @@
         {
             "en": "Disable selected CNN",
             "de": "Gewähltes CNN deaktivieren"
+        }
+    },
+    "cnninfo":
+    {
+        "Title":
+        {
+            "en": "Information element",
+            "de": "Informationselement"
+        },
+        "Brief":
+        {
+            "en": "This element can be used to display information from the vision app",
+            "de": "Dieses Element kann verwendet werden, um Informationen der Vision App anzuzeigen"
+        },
+        "Description":
+        {
+            "en": "This element can be used to display information from the vision app",
+            "de": "Dieses Element kann verwendet werden, um Informationen der Vision App anzuzeigen"
+        }
+    },
+    "noCnnActive":
+    {
+        "Title":
+        {
+            "en": "No CNN activated",
+            "de": "Kein CNN aktiviert"
         }
     }
 }

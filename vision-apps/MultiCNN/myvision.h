@@ -1,14 +1,13 @@
 #pragma once
 
 // Include framework headers
-#include <vision.h>
 #include "cnnmanager_v2.h"
+#include <vision.h>
 
 /**
  * @brief The app-specific vision object
  */
-class MyVision : public IDS::NXT::Vision
-{
+class MyVision : public IDS::NXT::Vision {
     // this Qt macro is needed for the signal/slot mechanism
     Q_OBJECT
 
@@ -36,7 +35,7 @@ public:
     /**
      * @brief Setter for the list of activated CNNs
      */
-    void setCnnData(const QList<IDS::NXT::CNNv2::CnnData> &cnnData);
+    void setCnnData(const QList<IDS::NXT::CNNv2::CnnData>& cnnData);
 
 private:
     std::vector<std::unique_ptr<IDS::NXT::CNNv2::MultiBuffer>> _result;

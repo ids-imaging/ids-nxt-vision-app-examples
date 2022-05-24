@@ -4,15 +4,14 @@
 #include <memory>
 
 // Include framework headers
+#include <cnnmanager_v2.h>
 #include <engine.h>
 #include <resultsourcecollection.h>
-#include <cnnmanager_v2.h>
 
 /**
  * @brief The app-specific engine
  */
-class MyEngine : public IDS::NXT::Engine
-{
+class MyEngine : public IDS::NXT::Engine {
     // This Qt macro is needed for the signal/slot mechanism
     Q_OBJECT
 
@@ -24,7 +23,7 @@ public:
      * This function constructs the engine object, further parameters could be inserted if
      * app-global interaction objects should be used in a multi-engine vision app.
      */
-    MyEngine(IDS::NXT::ResultSourceCollection &resultcollection);
+    MyEngine(IDS::NXT::ResultSourceCollection& resultcollection);
 
 protected:
     /**
@@ -71,7 +70,7 @@ private:
      *
      * This object stores all results of the image processing.
      */
-    IDS::NXT::ResultSourceCollection &_resultcollection;
+    IDS::NXT::ResultSourceCollection& _resultcollection;
 
     QList<IDS::NXT::CNNv2::CnnData> _activeCnns;
 };
