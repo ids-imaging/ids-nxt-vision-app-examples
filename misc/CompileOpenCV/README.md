@@ -30,4 +30,4 @@ bash ./compileOpenCV.sh
 For more detailed information see the comments in [compileOpenCV.sh](compileOpenCV.sh)
 
 ## Usage
-Copy the binaries to your Vision App like in this [example](../../vapps/FaceDetection-OpenCV/README.md)
+Copy the binaries to your Vision App like in this [example](../../vision-apps/FaceDetection-OpenCV/README.md)
