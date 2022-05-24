@@ -1,7 +1,7 @@
 {
     "Name": "filetransferandwebsite",
     "Manufacturer": "IDS Imaging Development Systems GmbH",
-    "Version": "1.0.0",
+    "Version": "1.1.0",
     "Type": "VApp",
     "Language":
     {
@@ -19,6 +19,14 @@
         {
             "en": "This sample VApp demonstrates the use of the FTP client. If FTP is enabled, this app allows you to store the latest camera image to the configured FTP server. Furthermore this VApp uses a website which will be provided by the webserver of the camera.",
             "de": "Diese Beispiel-VApp demonstriert die Verwendung des FTP-Clients. Wenn FTP aktiviert ist, können Sie mit dieser App das aktuelle Kamerabild auf dem konfigurierten FTP-Server speichern. Außerdem verwendet diese VApp eine Website, die vom Webserver der Kamera bereitgestellt wird."
+        },
+        "Website":
+        {
+            "Title":
+            {
+                "en": "Open demo website",
+                "de": "Demo-Webseite öffnen"
+            }
         }
     }
 }

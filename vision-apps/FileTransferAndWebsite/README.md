@@ -4,7 +4,7 @@ In this vision app you will use the FTP client which is provided by the IDS NXT 
 
 ## Getting Started
 ### Prerequisites
-![IDS NXT API version](https://img.shields.io/badge/NXT_API-v2.3.0-008A96.svg)  ![IDS NXT OS version](https://img.shields.io/badge/NXT_OS-v1.3.x-008A96.svg)  
+![IDS NXT API version](https://img.shields.io/badge/NXT_API-v2.3.0-008A96.svg)  ![IDS NXT OS version](https://img.shields.io/badge/NXT_OS-v2.6.x-008A96.svg)  
 
 * Hint: The FTP server configuration can be set using the `IDS NXT cockpit` or via REST at **<Camera_IP>/network/ftpclient**  
     Configuration example:  
@@ -26,5 +26,6 @@ In order to add a website to a vision app you need to:
 ``` bash
 DEPLOYFILES += $$PWD/qtlogging.ini $$PWD/website
 ```
+A custom title for the website node can be set in the manifest.json file under the "Website" section. This title is used as the text for the Website button in the IDS NXT cockpit.
 ## Licenses
 [![License for avatar](https://img.shields.io/badge/License_for_avatar-Flaticon-lightgrey.svg)](https://www.flaticon.com/free-icons/website)
