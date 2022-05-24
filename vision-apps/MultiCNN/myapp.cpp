@@ -1,29 +1,31 @@
 #include "myapp.h"
 #include <cnnmanager_v2.h>
-#include <QLoggingCategory>
 #include <QFontDatabase>
+#include <QLoggingCategory>
 
-static QLoggingCategory lc{ "MultiCNN.app" };
+static QLoggingCategory lc{"MultiCNN.app"};
 
 using namespace IDS::NXT;
 
-MyApp::MyApp(int &argc, char **argv)
-    : VApp{ argc, argv }
-    , _engine{ _resultcollection }
-    , _cnnPackage{ std::make_unique<ConfigurableFile>("cnnpackage", "cnn") }
-    , _enableCnnAction{ "enable" }
-    , _disableCnnAction{ "disable" }
-{
+MyApp::MyApp(int& argc, char** argv)
+  : VApp{argc, argv}
+  , _engine{_resultcollection}
+  , _cnnPackage{std::make_unique<ConfigurableFile>("cnnpackage", "cnn")}
+  , _enableCnnAction{"enable"}
+  , _disableCnnAction{"disable"}
+  , _vappInfo{"cnninfo"} {
     // initialization
-    auto filtertext = TranslatedText{ QMap<QString, QString>{ { "en", "IDS CNN File |*.cnn" }, { "de", "IDS CNN Datei |*.cnn" } } };
-    _cnnPackage->setFilter({ filtertext });
+    auto filtertext = TranslatedText{
+        QMap<QString, QString>{{"en", "IDS CNN File |*.cnn"}, {"de", "IDS CNN Datei |*.cnn"}}};
+    _cnnPackage->setFilter({filtertext});
     _cnnPackage->setWritable(true);
 
     updateCnnFileDeletableProperty();
 
     const auto cnns = CNNv2::CnnManager::getInstance().availableCnns();
     _installedCnns = std::make_unique<ConfigurableEnum>("cnns", cnns, cnns.at(0));
-    _installedCnns->setDescription("Active CNNs: ");
+
+    _vappInfo.setInfo(FrameworkApplication::manifest().getTranslatedText(QStringLiteral("Language.noCnnActive.Title")));
 
     // At this point all result sources must be created.
     _resultcollection.createSource("inference", ResultType::String);
@@ -33,7 +35,10 @@ MyApp::MyApp(int &argc, char **argv)
     _resultcollection.createSource("cnn", ResultType::String);
 
     // Connect framework signals with VApp slots
-    connect(&CNNv2::CnnManager::getInstance(), &CNNv2::CnnManager::installedCnnsChanged, this, &MyApp::installedCnnsChanged);
+    connect(&CNNv2::CnnManager::getInstance(),
+            &CNNv2::CnnManager::installedCnnsChanged,
+            this,
+            &MyApp::installedCnnsChanged);
     connect(&CNNv2::CnnManager::getInstance(), &CNNv2::CnnManager::cnnChanged, this, &MyApp::cnnChanged);
     connect(_cnnPackage.get(), &ConfigurableFile::written, this, &MyApp::cnnfileWritten);
     connect(_cnnPackage.get(), &ConfigurableFile::deleted, this, &MyApp::deleteCurrentCnn);
@@ -44,18 +49,15 @@ MyApp::MyApp(int &argc, char **argv)
     CNNv2::CnnManager::getInstance().enableLoadingMultipleCnns(true);
 }
 
-void MyApp::imageAvailable(std::shared_ptr<Hardware::Image> image)
-{
+void MyApp::imageAvailable(std::shared_ptr<Hardware::Image> image) {
     _engine.handleImage(image);
 }
 
-void MyApp::abortVision()
-{
+void MyApp::abortVision() {
     _engine.abortVision();
 }
 
-void MyApp::installedCnnsChanged()
-{
+void MyApp::installedCnnsChanged() {
     qCDebug(lc) << "installedCnnsChanged";
     try {
         auto cnns = CNNv2::CnnManager::getInstance().availableCnns();
@@ -64,55 +66,62 @@ void MyApp::installedCnnsChanged()
         _installedCnns->setValues(cnns);
 
         updateCnnFileDeletableProperty();
-    } catch (std::runtime_error &e) {
+    } catch (std::runtime_error& e) {
         qCritical(lc) << "Error:" << e.what();
     }
 }
 
-void MyApp::enableCnn()
-{
+void MyApp::enableCnn() {
     qCDebug(lc) << "enable" << _installedCnns->operator QString();
     CNNv2::CnnManager::getInstance().enableCnn(_installedCnns->operator QString(), true);
 }
 
-void MyApp::disableCnn()
-{
+void MyApp::disableCnn() {
     qCDebug(lc) << "disable" << _installedCnns->operator QString();
     CNNv2::CnnManager::getInstance().enableCnn(_installedCnns->operator QString(), false);
 }
 
-void MyApp::cnnChanged()
-{
+void MyApp::cnnChanged() {
     qCDebug(lc) << "cnnChanged";
     const auto activeCnns = CNNv2::CnnManager::getInstance().activeCnns();
 
-    QStringList cnns;
-    cnns.reserve(activeCnns.size());
-    for (const auto &cnn : activeCnns) {
-        cnns.append(cnn.name());
-    }
+    if (activeCnns.isEmpty()) {
+        _vappInfo.setInfo(
+            FrameworkApplication::manifest().getTranslatedText(QStringLiteral("Language.noCnnActive.Title")));
+    } else {
+        static VAppInfoElement::Info info;
 
-    _installedCnns->setDescription("Active CNNs: " + cnns.join(QStringLiteral(" ; ")));
+        QStringList cnns;
+        cnns.reserve(activeCnns.size());
+        for (const auto& cnn : activeCnns) {
+            cnns.append(cnn.name());
+        }
+        const auto infoText = TranslatedText{
+            QMap<QString, QString>{{"en", "<b>Active CNNs</b><br>• " + cnns.join(QStringLiteral("<br>• "))},
+                                   {"de", "<b>Aktive CNNs</b><br>• " + cnns.join(QStringLiteral("<br>• "))}}};
+
+        info.text = infoText;
+        info.category = VAppInfoElement::InfoCategory::Info;
+
+        _vappInfo.setInfo(info);
+    }
 }
 
-void MyApp::cnnfileWritten()
-{
+void MyApp::cnnfileWritten() {
     std::lock_guard<std::mutex> lock(_installLock);
 
     CNNv2::CnnManager::getInstance().addCnn(_cnnPackage->absoluteFilePath());
 }
 
-void MyApp::deleteCurrentCnn()
-{
+void MyApp::deleteCurrentCnn() {
     try {
         CNNv2::CnnManager::getInstance().removeCnn(_installedCnns->operator QString());
-    } catch (std::runtime_error &e) {
+    } catch (std::runtime_error& e) {
         qInfo(lc) << e.what();
     }
 }
 
-void MyApp::updateCnnFileDeletableProperty()
-{
+void MyApp::updateCnnFileDeletableProperty() {
     if (CNNv2::CnnManager::getInstance().availableCnns().size() > 1) {
         _cnnPackage->setDeletable(true);
     } else {

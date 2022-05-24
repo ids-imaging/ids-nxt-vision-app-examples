@@ -1,11 +1,12 @@
 #pragma once
 
 // Include framework headers
-#include <vapp.h>
-#include <resultsourcecollection.h>
-#include <configurableenum.h>
 #include <action.h>
+#include <configurableenum.h>
 #include <configurablefile.h>
+#include <infoelement.h>
+#include <resultsourcecollection.h>
+#include <vapp.h>
 
 // Include own headers
 #include "myengine.h"
@@ -17,8 +18,7 @@
  * functionality, such as listing in the REST-Interface / GUI and, probably most importantly allows the
  * usage of interaction elements such as actions, configurables etc.
  */
-class MyApp : public IDS::NXT::VApp
-{
+class MyApp : public IDS::NXT::VApp {
     // This Qt macro is needed for the signal/slot mechanism
     Q_OBJECT
 
@@ -28,7 +28,7 @@ public:
      * @param argc count of command line arguments
      * @param argv list of command line arguments
      */
-    MyApp(int &argc, char **argv);
+    MyApp(int& argc, char** argv);
 
 protected slots:
     /**
@@ -99,6 +99,7 @@ private:
     std::unique_ptr<IDS::NXT::ConfigurableEnum> _installedCnns;
     IDS::NXT::Action _enableCnnAction;
     IDS::NXT::Action _disableCnnAction;
+    IDS::NXT::InfoElement _vappInfo;
 
     std::mutex _installLock; // Lock to prevent installing a multiple cnns at the same time
 

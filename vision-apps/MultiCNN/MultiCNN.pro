@@ -6,7 +6,7 @@ SOURCES += myapp.cpp myvision.cpp myengine.cpp main.cpp
 HEADERS += myapp.h myvision.h myengine.h
 DISTFILES += license.txt qtlogging.ini
 
-NXT_SDK = 2.3.0
+NXT_SDK = 2.6.0
 AVATAR = avatar.png
 MANIFEST = manifest.json
 TRANSLATION = translation.json

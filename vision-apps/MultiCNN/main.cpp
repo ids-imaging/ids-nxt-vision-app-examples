@@ -6,7 +6,7 @@
 // Include local header files
 #include "myapp.h"
 
-static QLoggingCategory lc{ "MultiCNN" };
+static QLoggingCategory lc{"MultiCNN"};
 
 /**
  * @brief Serves as the main entry point for our program
@@ -14,13 +14,12 @@ static QLoggingCategory lc{ "MultiCNN" };
  * @param argv list of command line arguments
  * @return Exit success
  */
-int main(int argc, char *argv[])
-{
+int main(int argc, char* argv[]) {
     // Catch Signals to close VApp Properly
-    IDS::Utils::catchSignalsAndQuit({ SIGQUIT, SIGINT, SIGTERM, SIGHUP });
+    IDS::Utils::catchSignalsAndQuit({SIGQUIT, SIGINT, SIGTERM, SIGHUP});
 
     // Create the app object
-    MyApp app{ argc, argv };
+    MyApp app{argc, argv};
 
     // Log that the app runs now
     qInfo(lc) << "Up and running.";
