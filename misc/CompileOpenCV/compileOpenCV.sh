@@ -15,6 +15,8 @@
 #       script folder                                         #
 ###############################################################
 
+set -e
+
 OPENCV_VERSION=4.4.0
 
 # Download OpenCV or use already downloaded file
