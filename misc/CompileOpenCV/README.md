@@ -8,7 +8,7 @@ For this purpose you can use the virtual build engine which comes with the [IDS 
 * Download and install the [IDS NXT VApp Creator](https://en.ids-imaging.com/download-details/AS00029.html).
 
 ### Build the library
-To build openCV we will run [compileOpenCV.sh](compileOpenCV.sh) in the Vsion App build engine. The script will download the sources and perform the compilation process.  
+To build openCV we will run [compileOpenCV.sh](compileOpenCV.sh) in the Vision App build engine. The script will download the sources and perform the compilation process.  
 *Hint: If you are working behind a proxy you need to set the environment variables `http_proxy` and `https_proxy` in the build engine.*
 
 1. Copy the bash script [compileOpenCV.sh](compileOpenCV.sh) to the shared folder of the Vision App build engine (default is C:\Users\<YOUR_USER>\Documents\NXT)
