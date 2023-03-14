@@ -52,5 +52,23 @@
             "en": "The processed image is - in average - light.",
             "de": "Das verarbeitete Bild ist - im Durchschnitt - hell."
         }
+    },
+    "roi":
+    {
+        "Title":
+        {
+            "en": "ROI",
+            "de": "ROI"
+        },
+        "Brief":
+        {
+            "en": "ROI for gray value calculation",
+            "de": "ROI für die Grauwertberechnung"
+        },
+        "Description":
+        {
+            "en": "Region for which the gray value is calculated.",
+            "de": "Bereich, für den der Grauwert berechnet wird."
+        }
     }
 }
