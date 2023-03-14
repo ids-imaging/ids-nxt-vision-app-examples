@@ -5,9 +5,6 @@ QT += core widgets gui dbus
 SOURCES += main.cpp gvapp.cpp gvengine.cpp gvvision.cpp
 HEADERS += gvapp.h gvengine.h gvvision.h
 
-DEFINES +=
-DISTFILES += translation.json
-
 #Mandatory params
 NXT_SDK = 2.3.0
 AVATAR = avatar.png

@@ -4,8 +4,6 @@ QT += core widgets gui dbus
 
 SOURCES += customresultimage.cpp main.cpp myapp.cpp myengine.cpp myvision.cpp
 HEADERS += customresultimage.h myapp.h myengine.h myvision.h
-DEFINES += 
-DISTFILES += license.txt qtlogging.ini
 
 NXT_SDK = 2.1.0
 AVATAR = avatar.png

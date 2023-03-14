@@ -4,8 +4,6 @@ QT += core widgets gui dbus
 
 SOURCES += myapp.cpp myvision.cpp myengine.cpp tflite.cpp main.cpp customresultimage.cpp
 HEADERS += myapp.h myvision.h myengine.h tflite.h customresultimage.h
-DEFINES +=
-DISTFILES += license.txt qtlogging.ini
 
 # Add tensorflowLite library
 LIBS+= -L$$PWD/lib -ltensorflow-lite_2_3

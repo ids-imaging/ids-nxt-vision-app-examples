@@ -6,8 +6,6 @@ TARGET = classification
 SOURCES += myapp.cpp myvision.cpp myengine.cpp main.cpp
 HEADERS += myapp.h myvision.h myengine.h
 
-DEFINES +=
-DISTFILES +=
 #Mandatory params
 NXT_SDK = 2.3.0
 AVATAR = avatar.png
