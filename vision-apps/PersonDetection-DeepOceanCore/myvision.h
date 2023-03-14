@@ -6,7 +6,7 @@
 
 #include <QImage>
 
-#include "tflite.h"
+#include "inferenceresultprocessing.h"
 
 /**
  * @brief The app-specific vision object
@@ -32,22 +32,19 @@ public:
     void abort() override;
 
     // getter and setter for current processing
-    QList<TfLite::overlayData> result();
+    QList<InferenceResultProcessing::overlayData> result();
 
     IDS::NXT::CNNv2::CnnData cnnData() const;
     void setCnnData(const IDS::NXT::CNNv2::CnnData &cnnData);
 
-    void setBoundingBoxProcessing(const QPair<QString, QString> &TFLiteFiles);
-
-    float detectionThreshold() const;
-    void setDetectionThreshold(float newDetectionThreshold);
+    double detectionThreshold() const;
+    void setDetectionThreshold(double newDetectionThreshold);
 
 private:
-    QList<TfLite::overlayData> _result;
+    QList<InferenceResultProcessing::overlayData> _result;
 
     IDS::NXT::CNNv2::CnnData _cnnData;
-    BoundingBoxesProcessing _bbp;
-    float _detectionThreshold;
+    double _detectionThreshold;
 };
 
 #endif // MYVISION_H

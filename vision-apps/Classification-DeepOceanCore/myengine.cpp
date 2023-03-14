@@ -50,64 +50,31 @@ void MyEngine::handleResult(std::shared_ptr<IDS::NXT::Vision> vision)
     try {
         // #CLASSIFICATION
         qCDebug(lc) << " Get MyVision data";
-        // extracting the inference result of the CNN ...
-        auto cnnResult = obj->result();
-        // ... and some info regarding the cnn model
-        auto cnnData = obj->cnnData();
+        // extracting the inference result of the CNN
+        auto cnnResultList = obj->resultList();
 
         // Check if result is valid
-        if (!cnnResult) {
+        if (cnnResultList.isEmpty()) {
             throw std::runtime_error("CNN result not valid");
         }
 
-        // Get the output buffers of the CNN
-        const auto &allBuffers = cnnResult->allBuffers();
-
-        // Check if result is suited for classification
-        if (cnnData.inferenceType() != IDS::NXT::CNNv2::CnnData::InferenceType::Classification || allBuffers.size() != 1) {
-            throw std::runtime_error(
-                    "Error: CNN is not suited for classification or output buffer set is not specified correctly.");
-        }
-
         // Get Deep Ocean Core processing time
-        inferencetime = cnnResult->inferenceTime();
+        inferencetime = cnnResultList.first().duration_ms;
 
-        // Convert result to double and map corresponding class;
-        QList<QPair<QString, double>> result_classes;
-
-        // Prealloc memory for speed improvement
-        result_classes.reserve(cnnData.classes().size());
-        double expSum = 0;
-
-        // Classification cnns have only one output Buffer
-        auto currentCnnOutputBuffer = allBuffers.at(0);
-
-        // Extract all classes with classification probability from the CNN
-        for (qint32 cnt = 0; cnt < cnnData.classes().size(); cnt++) {
-            auto currentClass = cnnData.classes().at(cnt);
-            // Apply exponential function for softmax calculation.
-            //We need to cast the value to double before exp processing because the numbers can get huge, or tiny
-            double currentVal = std::exp(static_cast<double>(currentCnnOutputBuffer.data[cnt]));
-
-            // Sum up values for softmax dividor
-            expSum += currentVal;
-            result_classes.append(qMakePair(currentClass, currentVal));
+        // Check if inference result contains roi result
+        if (cnnResultList.first().roiResults.isEmpty()) {
+            throw std::runtime_error("CNN result contains no roi result");
         }
-        // free cnn buffer because we don't need it anymore
-        cnnResult = nullptr;
-
-        // sort classes
-        qSort(result_classes.begin(), result_classes.end(), ProbabilityComparer());
 
         // Make Top 0-4
-        for (auto i = 0; (i < 4) && (i < cnnData.classes().size()); i++) {
+        for (auto i = 0; (i < 4) && (i < cnnResultList.first().roiResults.first().inferenceProbabilities.size()); i++) {
             // Class
-            _resultcollection.addResult("inference", (result_classes[i].first), "Top" + QString::number(i + 1), vision->image());
-            // Propability with softmax creation
-            _resultcollection.addResult("inference_propability", QString::number(result_classes[i].second / expSum, 'f', 2), "Top" + QString::number(i + 1), vision->image());
+            _resultcollection.addResult("inference", cnnResultList.first().roiResults.first().inferenceProbabilities.at(i).inferenceClass, "Top" + QString::number(i + 1), vision->image());
+            // Propability
+            _resultcollection.addResult("inference_propability", QString::number(cnnResultList.first().roiResults.first().inferenceProbabilities.at(i).probability, 'f', 2), "Top" + QString::number(i + 1), vision->image());
         }
 
-        _resultcollection.addResult("inferencetime", inferencetime, "Time", vision->image());
+        _resultcollection.addResult("inferencetime", inferencetime, QStringLiteral("Time"), vision->image());
     } catch (const std::runtime_error &e) {
         qCCritical(lc) << "Error handling result: " << e.what();
         _resultcollection.addResult("inference", e.what(), QStringLiteral("Content1"), vision->image());

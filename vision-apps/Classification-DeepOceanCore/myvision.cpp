@@ -8,7 +8,7 @@
 
 using namespace IDS::NXT::CNNv2;
 
-static QLoggingCategory lc{ "classificationexample.vision" };
+static QLoggingCategory lc { "classificationexample.vision" };
 
 void MyVision::process()
 {
@@ -19,10 +19,16 @@ void MyVision::process()
 
         if (_cnnData) { // check if deep ocean core is correct initialized
             // #CLASSIFICATION
+
+            // process full image
+            QList<IDS::NXT::CnnHelper::NamedRoi> rois { { QStringLiteral("full"), QRect(QPoint(0, 0), img->imageSize()) } };
+
             // process image with deep ocean core.
-            // Scale the image to the input size of the cnn. If you don't scale it the NXT Framework will scale it which  can lower performance
-            _result = _cnnData.processImage(img->getQImage().scaled(_cnnData.inputSize(), Qt::IgnoreAspectRatio, Qt::FastTransformation),
-                                            QStringLiteral("Classification"));
+            IDS::NXT::CnnHelper::InferenceParameters inferenceParameters;
+            inferenceParameters.threshold = 0.0;
+            inferenceParameters.enableHeatMap = false;
+            inferenceParameters.transformationMode = IDS::NXT::CnnHelper::TransformationMode::FastTransformation;
+            _resultList = _cnnData.processImage(img, rois, inferenceParameters);
 
             img->visionOK("", "");
         } else { // Deep ocean core is not initialized. This can happen if no cnn is ativated.
@@ -50,9 +56,7 @@ void MyVision::setCnnData(const CnnData &cnnData)
     _cnnData = cnnData;
 }
 
-std::unique_ptr<MultiBuffer> MyVision::result()
+IDS::NXT::CnnHelper::InferenceResultList MyVision::resultList()
 {
-    // we need to move the result because it is stored in an unique pointer.
-    // To free the buffer destroy this object.
-    return std::move(_result);
+    return _resultList;
 }

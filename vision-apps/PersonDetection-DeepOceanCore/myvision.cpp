@@ -1,6 +1,8 @@
 // Include the own header
 #include "myvision.h"
 #include "cnnmanager_v2.h"
+#include "libutils_cnnhelper.h"
+
 #include <stdlib.h>
 
 #include <QImage>
@@ -21,14 +23,19 @@ void MyVision::process()
         if (_cnnData) { // check if deep ocean core is correctly initialized
             // #DETECTION
             const auto qImg = img->getQImage();
-            // scale the image to the input size of the cnn
-            auto scaledImage = qImg.scaled(_cnnData.inputSize(), Qt::IgnoreAspectRatio, Qt::FastTransformation);
-            // process image with the CNN configured on the Deep Ocean Core
-            auto buffer = _cnnData.processImage(scaledImage);
 
-            // postprocesing with TfLite
-            _result = _bbp.processDetections(buffer, qImg.size(), scaledImage.size(),
-                                             _cnnData.classes(), _detectionThreshold);
+            // process image with the CNN configured on the Deep Ocean Core
+            QList<IDS::NXT::CnnHelper::NamedRoi> rois;
+            rois.append(IDS::NXT::CnnHelper::NamedRoi { "full", qImg.rect() });
+
+            IDS::NXT::CnnHelper::InferenceParameters inferenceParameters;
+            inferenceParameters.threshold = _detectionThreshold;
+            inferenceParameters.enableHeatMap = false;
+            inferenceParameters.transformationMode = IDS::NXT::CnnHelper::TransformationMode::FastTransformation;
+
+            const auto result = _cnnData.processImage(qImg, rois, inferenceParameters);
+
+            _result = InferenceResultProcessing::createResult(result.first(), result.first().inputRoi.roi.size(), cnnData().classes());
 
             img->visionOK("", "");
         } else {
@@ -57,23 +64,18 @@ void MyVision::setCnnData(const CnnData &cnnData)
     _cnnData = cnnData;
 }
 
-QList<TfLite::overlayData> MyVision::result()
+QList<InferenceResultProcessing::overlayData> MyVision::result()
 {
     // we need to move the result because it is stored in an unique pointer
     return _result;
 }
 
-void MyVision::setBoundingBoxProcessing(const QPair<QString, QString> &TFLiteFiles)
-{
-    _bbp.setTFLiteFiles(TFLiteFiles);
-}
-
-float MyVision::detectionThreshold() const
+double MyVision::detectionThreshold() const
 {
     return _detectionThreshold;
 }
 
-void MyVision::setDetectionThreshold(float newDetectionThreshold)
+void MyVision::setDetectionThreshold(double newDetectionThreshold)
 {
     _detectionThreshold = newDetectionThreshold;
 }

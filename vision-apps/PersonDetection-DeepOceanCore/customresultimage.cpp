@@ -21,7 +21,7 @@ CustomResultImage::CustomResultImage(const QByteArray &name)
 }
 
 void CustomResultImage::createOverlay(const std::shared_ptr<Hardware::Image> &image,
-                                      const QList<TfLite::overlayData> &data, const QString &mode)
+                                      const QList<InferenceResultProcessing::overlayData> &data, const QString &mode)
 {
     static const QVector<QColor> colors { _idsBlueLight,
                                           _idsBlue,

@@ -11,7 +11,6 @@
 #include <resultsourcecollection.h>
 #include <cnnmanager_v2.h>
 #include "customresultimage.h"
-#include "tflite.h"
 
 /**
  * @brief The app-specific engine
@@ -80,8 +79,6 @@ private:
     CustomResultImage _resultImage;
 
     IDS::NXT::CNNv2::CnnData _activeCnn;
-
-    QPair<QString, QString> _currentTFLiteFiles;
 };
 
 #endif // MYENGINE_H

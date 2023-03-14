@@ -6,7 +6,7 @@
 #include "image.h"
 #include "resultimage.h"
 
-#include "tflite.h"
+#include "inferenceresultprocessing.h"
 
 /**
   * Creates an resultimage with custom overlay
@@ -17,7 +17,7 @@ public:
     CustomResultImage(const QByteArray &name);
     // Create Overlay with detected objects
     void createOverlay(const std::shared_ptr<IDS::NXT::Hardware::Image> &image,
-                       const QList<TfLite::overlayData> &data, const QString &mode);
+                       const QList<InferenceResultProcessing::overlayData> &data, const QString &mode);
 
     QImage getImage() const override;
 
