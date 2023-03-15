@@ -4,6 +4,7 @@
 #include <vision.h>
 #include "cnnmanager_v2.h"
 #include <QImage>
+#include "libutils_cnnhelper.h"
 
 /**
  * @brief The app-specific vision object
@@ -29,13 +30,13 @@ public:
     void abort() override;
 
     // getter and setter for current processing
-    std::unique_ptr<IDS::NXT::CNNv2::MultiBuffer> result();
+    IDS::NXT::CnnHelper::InferenceResultList resultList();
 
     IDS::NXT::CNNv2::CnnData cnnData() const;
     void setCnnData(const IDS::NXT::CNNv2::CnnData &cnnData);
 
 private:
-    std::unique_ptr<IDS::NXT::CNNv2::MultiBuffer> _result;
+    IDS::NXT::CnnHelper::InferenceResultList _resultList;
 
     IDS::NXT::CNNv2::CnnData _cnnData;
 };

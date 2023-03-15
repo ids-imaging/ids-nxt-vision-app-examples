@@ -7,7 +7,7 @@ This app demonstrates how to accelerate a neural network using the Deep Ocean Co
 
 ## Getting Started
 ### Prerequisites
-![IDS NXT API version](https://img.shields.io/badge/NXT_API-v2.1.0-008A96.svg)  ![IDS NXT OS version](https://img.shields.io/badge/NXT_OS-v1.1.x-008A96.svg)  
+![IDS NXT API version](https://img.shields.io/badge/NXT_API-v3.0.0-008A96.svg)  ![IDS NXT OS version](https://img.shields.io/badge/NXT_OS-v3.0.x-008A96.svg)
 
 ## Hint
 To use your own CNN, copy the .cnn file into ./cnn directory.  

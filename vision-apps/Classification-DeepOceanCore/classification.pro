@@ -7,7 +7,7 @@ SOURCES += myapp.cpp myvision.cpp myengine.cpp main.cpp
 HEADERS += myapp.h myvision.h myengine.h
 
 #Mandatory params
-NXT_SDK = 2.3.0
+NXT_SDK = 3.0.0
 AVATAR = avatar.png
 MANIFEST = manifest.json
 TRANSLATION = translation.json

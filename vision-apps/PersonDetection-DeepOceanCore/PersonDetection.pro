@@ -2,16 +2,14 @@ TARGET = persondetector
 CONFIG += c++14
 QT += core widgets gui dbus
 
-SOURCES += myapp.cpp myvision.cpp myengine.cpp tflite.cpp main.cpp customresultimage.cpp
-HEADERS += myapp.h myvision.h myengine.h tflite.h customresultimage.h
+SOURCES += myapp.cpp myvision.cpp myengine.cpp main.cpp customresultimage.cpp \
+    inferenceresultprocessing.cpp
+HEADERS += myapp.h myvision.h myengine.h customresultimage.h \
+    inferenceresultprocessing.h
 
-# Add tensorflowLite library
-LIBS+= -L$$PWD/lib -ltensorflow-lite_2_3
 LIBS+= -ldl
-HEADERPATH += $$PWD/include
-INCLUDEPATH += $$PWD/include
 
-NXT_SDK = 2.1.0
+NXT_SDK = 3.0.0
 AVATAR = avatar.png
 MANIFEST = manifest.json
 TRANSLATION = translation.json

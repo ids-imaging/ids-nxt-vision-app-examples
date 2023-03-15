@@ -50,8 +50,7 @@ void MyEngine::setupVision(std::shared_ptr<Vision> vision)
 
         // initialize the CNN included in this example VApp. It is pretrained to detect persons.
         obj->setCnnData(_activeCnn);
-        obj->setBoundingBoxProcessing(_currentTFLiteFiles);
-        obj->setDetectionThreshold(static_cast<float>(_detectionThreshold) / 100);
+        obj->setDetectionThreshold(static_cast<double>(_detectionThreshold) / 100);
     }
 }
 
@@ -92,7 +91,6 @@ void MyEngine::handleResult(std::shared_ptr<Vision> vision)
     // reuse the image buffer.
     obj->setImage(nullptr);
 }
-
 void MyEngine::cnnChanged()
 {
     // This function is needed to load the included person detection model upon the Vision App start
@@ -102,24 +100,6 @@ void MyEngine::cnnChanged()
         if (!activeCnns.isEmpty()) {
             // get the active CNN of the Deep Ocean Core
             _activeCnn = activeCnns.at(0);
-
-            if (_activeCnn.inferenceType() == CnnData::InferenceType::Detection) {
-
-                //... and the corresponding box regression TFLite model ...
-                const auto currentTfLiteBox = _activeCnn.cnnDirectory() + "/Box.tflite";
-                if (!QFile::exists(currentTfLiteBox)) {
-                    qCCritical(lc) << "Box.tflite does not exist";
-                    return;
-                }
-
-                //... and the corresponding box decoding TFLite model ...
-                const auto currentTfLiteDecoder = _activeCnn.cnnDirectory() + "/Decoder.tflite";
-                if (!QFile::exists(currentTfLiteDecoder)) {
-                    qCCritical(lc) << "Decoder.tflite does not exist";
-                    return;
-                }
-                _currentTFLiteFiles = { currentTfLiteBox, currentTfLiteDecoder };
-            }
             return;
         } else {
             qCDebug(lc) << "No cnn available";
