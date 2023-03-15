@@ -4,7 +4,6 @@ QT += core widgets gui dbus
 
 SOURCES += myapp.cpp myvision.cpp myengine.cpp main.cpp
 HEADERS += myapp.h myvision.h myengine.h
-DISTFILES += license.txt qtlogging.ini
 
 NXT_SDK = 2.3.0
 AVATAR = avatar.png

@@ -17,8 +17,6 @@ HEADERS += \
 
 DISTFILES += \
     README \
-    qtlogging.ini \
-    translation.json \
     haarcascade_frontalface.xml
 
 DEFINES +=
@@ -34,6 +32,7 @@ LICENSE = license.txt
 
 # Note: Paths have to be absolute
 # add files within source directory which should be shipped (e.g. libraries, configs, ...)
+DEPLOYFILES += $$PWD/qtlogging.ini
 DEPLOYFILES += $$PWD/opencv/share/opencv4/haarcascades/haarcascade_frontalface_default.xml
 
 # Note: Symlinks are not supported on Windows. Only deploy needed files.
