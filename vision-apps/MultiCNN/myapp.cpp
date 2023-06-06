@@ -15,9 +15,9 @@ MyApp::MyApp(int& argc, char** argv)
   , _disableCnnAction{"disable"}
   , _vappInfo{"cnninfo"} {
     // initialization
-    auto filtertext = TranslatedText{
-        QMap<QString, QString>{{"en", "IDS CNN File |*.cnn"}, {"de", "IDS CNN Datei |*.cnn"}}};
-    _cnnPackage->setFilter({filtertext});
+    QList<TranslatedText> filtercnn;
+    filtercnn.append("IDS NXT rio/rome classification model |*.rcla; *.cnn");
+    _cnnPackage->setFilter(filtercnn);
     _cnnPackage->setWritable(true);
 
     updateCnnFileDeletableProperty();
