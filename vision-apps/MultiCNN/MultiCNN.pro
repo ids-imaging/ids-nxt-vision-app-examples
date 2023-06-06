@@ -5,7 +5,7 @@ QT += core widgets gui dbus
 SOURCES += myapp.cpp myvision.cpp myengine.cpp main.cpp
 HEADERS += myapp.h myvision.h myengine.h
 
-NXT_SDK = 2.6.0
+NXT_SDK = 3.1.0
 AVATAR = avatar.png
 MANIFEST = manifest.json
 TRANSLATION = translation.json
